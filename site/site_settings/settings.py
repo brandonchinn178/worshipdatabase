@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_mobile',
+
     'admin',
     'main',
     'database',
@@ -50,6 +52,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_mobile.middleware.MobileDetectionMiddleware',
+    'django_mobile.middleware.SetFlavourMiddleware',
 )
 
 ROOT_URLCONF = 'site_settings.urls'
@@ -70,8 +74,12 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'django_mobile.context_processors.flavour',
             ),
-            'debug': DEBUG
+            'loaders': [
+                'django_mobile.loader.Loader',
+                'django.template.loaders.filesystem.Loader',
+            ],
         }
     }
 ]
