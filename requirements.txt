@@ -1,6 +1,6 @@
 # just using requirements.txt for heroku
 
-django==1.9.5
+django==1.11.29
 boto==2.35.2
 wsgiref==0.1.2
 django-storages==1.1.8
